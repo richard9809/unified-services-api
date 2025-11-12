@@ -1,3 +1,28 @@
+server:
+  port: 8080
+
 spring:
   application:
     name: unified-services-api
+
+  # DB settings for local NON-docker runs (optional – you can omit if you always use docker)
+  datasource:
+    url: jdbc:postgresql://localhost:5433/unified_api
+    username: unified_user
+    password: unified_pass
+
+    jpa:
+      hibernate:
+        ddl-auto: update
+      properties:
+        hibernate.format_sql: true
+
+    flyway:
+      enabled: true
+
+app:
+  cache:
+    minutes: 15
+  external:
+    nominatimBase: https://nominatim.openstreetmap.org
+    openMeteoBase: https://api.open-meteo.com
